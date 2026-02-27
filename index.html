@@ -215,39 +215,145 @@
 /** ====== CONFIG (your rules) ====== **/
 const RULES = {
   maxDishesPerGuest: 5,
-  maxPremiumPerGuest: 2,
   cooldownMinutes: 15
 };
 
 /** ====== MENU DATA (replace with your full menu later) ====== **/
 const MENU = [
-  // Sushi / Nigiri
-  { code:"S1", name:"Salmon Sushi", cat:"Sushi", premium:false, sashimi:false, desc:"Classic nigiri" },
-  { code:"S2", name:"Tuna Sushi", cat:"Sushi", premium:false, sashimi:false, desc:"Classic nigiri" },
+  // ===== Deluxe Sushi Menu / Nigiri & Gunkan (2 pcs) =====
+  { code:"01", name:"Salmon (Nigiri)", cat:"Deluxe Sushi", desc:"£5.00", countsTowardLimit:true },
+  { code:"02", name:"Tuna (Nigiri)", cat:"Deluxe Sushi", desc:"£5.80", countsTowardLimit:true },
+  { code:"03", name:"Shrimp (Nigiri)", cat:"Deluxe Sushi", desc:"£5.00", countsTowardLimit:true },
+  { code:"04", name:"Ama Ebi (Sweet shrimp)", cat:"Deluxe Sushi", desc:"£5.80", countsTowardLimit:true },
+  { code:"05", name:"Eel (Unagi)", cat:"Deluxe Sushi", desc:"£5.80", countsTowardLimit:true },
+  { code:"06", name:"Octopus", cat:"Deluxe Sushi", desc:"£5.80", countsTowardLimit:true },
+  { code:"07", name:"Crab Stick", cat:"Deluxe Sushi", desc:"£4.80", countsTowardLimit:true },
+  { code:"08", name:"Tofu", cat:"Deluxe Sushi", desc:"£4.80", countsTowardLimit:true },
+  { code:"09", name:"Avocado", cat:"Deluxe Sushi", desc:"£4.80", countsTowardLimit:true },
+  { code:"10", name:"Tamago (Egg)", cat:"Deluxe Sushi", desc:"£4.80", countsTowardLimit:true },
+  { code:"11", name:"Gunkan Seaweed", cat:"Deluxe Sushi", desc:"£5.00", countsTowardLimit:true },
+  { code:"12", name:"Gunkan Salmon", cat:"Deluxe Sushi", desc:"£5.00", countsTowardLimit:true },
+  { code:"13", name:"Gunkan Tuna", cat:"Deluxe Sushi", desc:"£5.00", countsTowardLimit:true },
+  { code:"14", name:"Gunkan Tobiko", cat:"Deluxe Sushi", desc:"£5.00", countsTowardLimit:true },
+  { code:"15", name:"Surfclam", cat:"Deluxe Sushi", desc:"£5.80", countsTowardLimit:true },
+  { code:"16", name:"Flamed Tuna", cat:"Deluxe Sushi", desc:"£5.80", countsTowardLimit:true },
+  { code:"17", name:"Flamed Seabass", cat:"Deluxe Sushi", desc:"£5.50", countsTowardLimit:true },
+  { code:"18", name:"Flamed Beef", cat:"Deluxe Sushi", desc:"£5.50", countsTowardLimit:true },
+  { code:"19", name:"Flamed Salmon", cat:"Deluxe Sushi", desc:"£5.50", countsTowardLimit:true },
 
-  // Premium examples
-  { code:"P1", name:"Oyster", cat:"Premium", premium:true, sashimi:false, desc:"Premium item" },
+  // ===== Hand Roll (1 pc) =====
+  { code:"20", name:"Vegan Hand Roll", cat:"Hand Roll", desc:"£5.00", countsTowardLimit:true },
+  { code:"21", name:"California Hand Roll", cat:"Hand Roll", desc:"£5.00", countsTowardLimit:true },
+  { code:"22", name:"Salmon Avocado Hand Roll", cat:"Hand Roll", desc:"£5.00", countsTowardLimit:true },
+  { code:"23", name:"Tuna Hand Roll", cat:"Hand Roll", desc:"£5.00", countsTowardLimit:true },
+  { code:"24", name:"Eel Hand Roll", cat:"Hand Roll", desc:"£6.00", countsTowardLimit:true },
+  { code:"25", name:"Hawaii (Prawn) Hand Roll", cat:"Hand Roll", desc:"£5.00", countsTowardLimit:true },
+  { code:"26", name:"Soft Shell Crab Hand Roll", cat:"Hand Roll", desc:"£6.00", countsTowardLimit:true },
 
-  // Sashimi (treated as premium by default)
-  { code:"SA1", name:"Salmon Sashimi", cat:"Sashimi", premium:true, sashimi:true, desc:"Sashimi (counts as premium)" },
-  { code:"SA2", name:"Tuna Sashimi", cat:"Sashimi", premium:true, sashimi:true, desc:"Sashimi (counts as premium)" },
+  // ===== Maki (3 pcs) =====
+  { code:"27", name:"Cucumber Maki", cat:"Maki", desc:"£2.50", countsTowardLimit:true },
+  { code:"28", name:"Crab Stick Maki", cat:"Maki", desc:"£2.50", countsTowardLimit:true },
+  { code:"29", name:"Salmon Maki", cat:"Maki", desc:"£3.00", countsTowardLimit:true },
+  { code:"30", name:"Egg Maki", cat:"Maki", desc:"£2.50", countsTowardLimit:true },
+  { code:"31", name:"Tuna Maki", cat:"Maki", desc:"£3.00", countsTowardLimit:true },
+  { code:"32", name:"Avocado Maki", cat:"Maki", desc:"£2.50", countsTowardLimit:true },
 
-  // Rolls
-  { code:"R1", name:"California Roll", cat:"Rolls", premium:false, sashimi:false, desc:"8 pcs" },
-  { code:"R2", name:"Spicy Salmon Roll", cat:"Rolls", premium:false, sashimi:false, desc:"8 pcs" },
+  // ===== Uramaki Rolls (2 pcs) =====
+  { code:"33", name:"Salmon Roll", cat:"Uramaki Rolls", desc:"£3.50", countsTowardLimit:true },
+  { code:"34", name:"Spicy Salmon Roll", cat:"Uramaki Rolls", desc:"£3.50", countsTowardLimit:true },
+  { code:"35", name:"Tuna Roll", cat:"Uramaki Rolls", desc:"£3.60", countsTowardLimit:true },
+  { code:"36", name:"Spicy Tuna Roll", cat:"Uramaki Rolls", desc:"£3.60", countsTowardLimit:true },
+  { code:"37", name:"California Roll", cat:"Uramaki Rolls", desc:"£3.50", countsTowardLimit:true },
+  { code:"38", name:"Crunchy Prawn Roll", cat:"Uramaki Rolls", desc:"£4.00", countsTowardLimit:true },
+  { code:"39", name:"Crispy Tempura Roll", cat:"Uramaki Rolls", desc:"£3.50", countsTowardLimit:true },
+  { code:"40", name:"Chicken Roll", cat:"Uramaki Rolls", desc:"£4.00", countsTowardLimit:true },
+  { code:"41", name:"Beef Roll", cat:"Uramaki Rolls", desc:"£4.00", countsTowardLimit:true },
+  { code:"42", name:"Vegan Roll", cat:"Uramaki Rolls", desc:"£4.00", countsTowardLimit:true },
 
-  // Hot / Fried
-  { code:"F1", name:"Chicken Karaage", cat:"Fried", premium:false, sashimi:false, desc:"Crispy chicken" },
-  { code:"F2", name:"Tempura Prawn", cat:"Fried", premium:true, sashimi:false, desc:"Premium fried" },
+  // ===== Kyoto Signature Rolls (Exclusive for AYCE) =====
+  { code:"43", name:"Avo-Licious Veggie Roll", cat:"Kyoto Signature Rolls", desc:"£4.50", countsTowardLimit:true },
+  { code:"44", name:"Mango Tango Roll", cat:"Kyoto Signature Rolls", desc:"£4.50", countsTowardLimit:true },
+  { code:"45", name:"Salmon Prawn Delight Roll", cat:"Kyoto Signature Rolls", desc:"£4.50", countsTowardLimit:true },
+  { code:"46", name:"Dragon’s Breath Wakame Roll", cat:"Kyoto Signature Rolls", desc:"£4.50", countsTowardLimit:true },
+  { code:"47", name:"Tiger Roll", cat:"Kyoto Signature Rolls", desc:"£4.50", countsTowardLimit:true },
+  { code:"48", name:"Seared Seabass Fury Roll", cat:"Kyoto Signature Rolls", desc:"£4.50", countsTowardLimit:true },
+  { code:"49", name:"Supreme Dragon Roll", cat:"Kyoto Signature Rolls", desc:"£4.50", countsTowardLimit:true },
+  { code:"50", name:"Inferno Roll (Unagi)", cat:"Kyoto Signature Rolls", desc:"£4.50", countsTowardLimit:true },
+  { code:"51", name:"4 Seas Rainbow Roll", cat:"Kyoto Signature Rolls", desc:"£4.50", countsTowardLimit:true },
+  { code:"52", name:"Spicy Tuna Crunch Roll", cat:"Kyoto Signature Rolls", desc:"£4.50", countsTowardLimit:true },
+  { code:"53", name:"Salmon Philadelphia Roll", cat:"Kyoto Signature Rolls", desc:"£4.50", countsTowardLimit:true },
+  { code:"54", name:"Ultimate Spider Roll", cat:"Kyoto Signature Rolls", desc:"£4.50", countsTowardLimit:true },
 
-  // Rice / Noodles
-  { code:"N1", name:"Chicken Katsu Curry", cat:"Rice & Noodles", premium:false, sashimi:false, desc:"Comfort bowl" },
-  { code:"N2", name:"Tonkotsu Ramen", cat:"Rice & Noodles", premium:false, sashimi:false, desc:"Rich broth" },
+  // ===== Sashimi (PAID add-on, per lb) =====
+  { code:"55", name:"Salmon Sashimi", cat:"Sashimi (Paid)", desc:"£1 per lb", paid:true, unit:"lb", pricePerUnit:1.0, countsTowardLimit:false },
+  { code:"56", name:"Tuna Sashimi", cat:"Sashimi (Paid)", desc:"£1.50 per lb", paid:true, unit:"lb", pricePerUnit:1.5, countsTowardLimit:false },
 
-  // Desserts
-  { code:"D1", name:"Mochi Ice Cream", cat:"Dessert", premium:false, sashimi:false, desc:"Sweet finish" },
+  // ===== Rice, Noodle Soup & Veggies =====
+  { code:"57", name:"Tsurai Beef Rice", cat:"Rice & Noodles", desc:"£10.50", countsTowardLimit:true },
+  { code:"58", name:"Chicken Katsu Rice", cat:"Rice & Noodles", desc:"£10.50", countsTowardLimit:true },
+  { code:"59", name:"Kyoto Tonkotsu Ramen Soup", cat:"Rice & Noodles", desc:"£12.50", countsTowardLimit:true },
+  { code:"60", name:"Fried Chicken Ramen Soup", cat:"Rice & Noodles", desc:"£11.50", countsTowardLimit:true },
+  { code:"61", name:"Vegan Udon Soup", cat:"Rice & Noodles", desc:"£10.50", countsTowardLimit:true },
+  { code:"62", name:"Vegetable Mix", cat:"Veggies", desc:"£6.50", countsTowardLimit:true },
+  { code:"63", name:"Mikkusu Mushrooms", cat:"Veggies", desc:"£6.50", countsTowardLimit:true },
+  { code:"64", name:"Zukkini (Hot & Spicy)", cat:"Veggies", desc:"£6.50", countsTowardLimit:true },
+
+  // ===== Deep Fried =====
+  { code:"65", name:"Korean Honey Chicken", cat:"Deep Fried", desc:"£5.00", countsTowardLimit:true },
+  { code:"66", name:"Fried Veggie Mix", cat:"Deep Fried", desc:"£5.00", countsTowardLimit:true },
+  { code:"67", name:"Panko Calamari", cat:"Deep Fried", desc:"£5.00", countsTowardLimit:true },
+  { code:"68", name:"Ebi Fry", cat:"Deep Fried", desc:"£5.00", countsTowardLimit:true },
+  { code:"69", name:"Karaage Salmon", cat:"Deep Fried", desc:"£5.00", countsTowardLimit:true },
+  { code:"70", name:"Takoyaki Balls", cat:"Deep Fried", desc:"£6.00", countsTowardLimit:true },
+  { code:"71", name:"Bao Chicken", cat:"Deep Fried", desc:"£6.00", countsTowardLimit:true },
+  { code:"72", name:"Bao Fish", cat:"Deep Fried", desc:"£6.00", countsTowardLimit:true },
+  { code:"73", name:"Chicken Debasaki", cat:"Deep Fried", desc:"£5.50", countsTowardLimit:true },
+  { code:"74", name:"Korean Chicken Wings", cat:"Deep Fried", desc:"£5.50", countsTowardLimit:true },
+  { code:"75", name:"Karaage Fish", cat:"Deep Fried", desc:"£6.00", countsTowardLimit:true },
+  { code:"76", name:"Tempura Green Beans & Veggies", cat:"Deep Fried", desc:"£5.50", countsTowardLimit:true },
+  { code:"77", name:"Crabclaws", cat:"Deep Fried", desc:"£5.50", countsTowardLimit:true },
+  { code:"78", name:"Sesame Prawn Toast", cat:"Deep Fried", desc:"£5.50", countsTowardLimit:true },
+  { code:"79", name:"Torpedo Shrimp Spring Roll", cat:"Deep Fried", desc:"£5.50", countsTowardLimit:true },
+
+  // ===== Soups & Salad =====
+  { code:"80", name:"Miso Soup", cat:"Soups & Salad", desc:"£4.50", countsTowardLimit:true },
+  { code:"81", name:"Seafood Soup", cat:"Soups & Salad", desc:"£4.50", countsTowardLimit:true },
+  { code:"82", name:"Wakame Salad", cat:"Soups & Salad", desc:"£6.00", countsTowardLimit:true },
+  { code:"83", name:"Tataki Beef Salad", cat:"Soups & Salad", desc:"£8.00", countsTowardLimit:true },
+  { code:"84", name:"Ebi Mango Salad", cat:"Soups & Salad", desc:"£8.00", countsTowardLimit:true },
+
+  // ===== Teppan Grilled & Lava Stone BBQ =====
+  { code:"85", name:"Yaki Salmon", cat:"Teppan & BBQ", desc:"£5.50", countsTowardLimit:true },
+  { code:"86", name:"Chicken Gyoza", cat:"Teppan & BBQ", desc:"£5.50", countsTowardLimit:true },
+  { code:"87", name:"Beef Bulgogi", cat:"Teppan & BBQ", desc:"£6.50", countsTowardLimit:true },
+  { code:"88", name:"Squid Rings No Guriru", cat:"Teppan & BBQ", desc:"£7.00", countsTowardLimit:true },
+  { code:"89", name:"Guriru Mussels", cat:"Teppan & BBQ", desc:"£6.50", countsTowardLimit:true },
+  { code:"90", name:"Usuyaki Beef Rolls", cat:"Teppan & BBQ", desc:"£6.50", countsTowardLimit:true },
+  { code:"91", name:"Okonomiyaki Seafood", cat:"Teppan & BBQ", desc:"£10.50", countsTowardLimit:true },
+  { code:"92", name:"Okonomiyaki Veggie Supreme", cat:"Teppan & BBQ", desc:"£10.50", countsTowardLimit:true },
+  { code:"93", name:"Ribeye", cat:"Teppan & BBQ", desc:"£8.50", countsTowardLimit:true },
+  { code:"94", name:"Yakitori Chicken", cat:"Teppan & BBQ", desc:"£7.00", countsTowardLimit:true },
+  { code:"95", name:"Kushi Shrimp", cat:"Teppan & BBQ", desc:"£7.50", countsTowardLimit:true },
+  { code:"96", name:"Kushi Squid", cat:"Teppan & BBQ", desc:"£7.50", countsTowardLimit:true },
+  { code:"97", name:"Lambchop Babekyu", cat:"Teppan & BBQ", desc:"£7.50", countsTowardLimit:true },
+  { code:"98", name:"Chicken Wings BBQ Sauce", cat:"Teppan & BBQ", desc:"£5.50", countsTowardLimit:true },
+
+  // ===== Sweets & Desserts =====
+  { code:"99", name:"Tempura Banana", cat:"Dessert", desc:"£4.50", countsTowardLimit:true },
+  { code:"100", name:"Sweet Anpan Buns", cat:"Dessert", desc:"£4.50", countsTowardLimit:true },
+  { code:"101", name:"Tempura Lychee", cat:"Dessert", desc:"£4.00", countsTowardLimit:true },
+  { code:"102", name:"Ice Cream (choose 1 flavor, 1 per person)", cat:"Dessert", desc:"£2.00", countsTowardLimit:true },
+  { code:"103", name:"Sesame Balls", cat:"Dessert", desc:"£3.50", countsTowardLimit:true },
+  { code:"104", name:"Japanese Panacotta (1 per person, limited)", cat:"Dessert", desc:"£5.50", countsTowardLimit:true },
+
+  // ===== Sides (free each round, not within limit) =====
+  { code:"105", name:"Edamame", cat:"Sides", desc:"£4.00", countsTowardLimit:false },
+  { code:"106", name:"Takuan Cucumber", cat:"Sides", desc:"£4.00", countsTowardLimit:false },
+  { code:"107", name:"Yaki Meshi", cat:"Sides", desc:"£4.50", countsTowardLimit:false },
+  { code:"108", name:"Gohan (Rice)", cat:"Sides", desc:"£3.00", countsTowardLimit:false },
+  { code:"109", name:"Yaki Udon", cat:"Sides", desc:"£4.50", countsTowardLimit:false },
+  { code:"110", name:"Fries", cat:"Sides", desc:"£4.00", countsTowardLimit:false },
 ];
-
 /** ====== STATE ====== **/
 let activeCat = "All";
 let cart = {}; // code -> qty
