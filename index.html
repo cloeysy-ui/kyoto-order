@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kyoto AYCE Order</title>
+
+<style>
+body{font-family:Arial;background:#111;color:white;padding:20px}
+h2{color:#f4b942}
+.section{background:#1c1c1c;padding:15px;margin-bottom:15px;border-radius:10px}
+input{padding:5px;margin:5px 0}
+button{padding:8px 12px;background:#f4b942;border:none;border-radius:5px;cursor:pointer}
+button:hover{opacity:0.9}
+.item{display:flex;justify-content:space-between;margin:8px 0}
+.small{font-size:12px;color:#aaa}
+</style>
+</head>
+
+<body>
+
+<h2>KYOTO All You Can Eat</h2>
+
+<div class="section">
+Table: <input id="tableId">
+Guests: <input id="guests" type="number" min="1" value="1">
+<p class="small">Max 5 dishes per guest per round. Premium max 2 per guest.</p>
+</div>
+
+<div class="section">
+<h3>Sushi</h3>
+<div class="item">Salmon Sushi <input type="number" min="0" value="0" data-premium="false"></div>
+<div class="item">Tuna Sushi <input type="number" min="0" value="0" data-premium="false"></div>
+<div class="item">Oyster (Premium) <input type="number" min="0" value="0" data-premium="true"></div>
+</div>
+
+<div class="section">
+<button onclick="submitOrder()">Confirm Order</button>
+</div>
+
+<script>
+let lastOrder={};
+
+function submitOrder(){
+
+let table=document.getElementById("tableId").value;
+let guests=parseInt(document.getElementById("guests").value);
+let now=Date.now();
+
+if(!table){alert("Enter table number");return;}
+
+if(lastOrder[table]){
+let diff=(now-lastOrder[table])/60000;
+if(diff<15){
+alert("Next round available in "+Math.ceil(15-diff)+" mins");
+return;
+}
+}
+
+let total=0;
+let premium=0;
+let items=[];
+
+document.querySelectorAll("input[type=number]").forEach(i=>{
+let qty=parseInt(i.value);
+if(qty>0){
+total+=qty;
+if(i.dataset.premium==="true"){premium+=qty;}
+items.push({name:i.parentElement.textContent.trim(),quantity:qty});
+}
+});
+
+if(total>guests*5){alert("Max 5 dishes per guest");return;}
+if(premium>guests*2){alert("Premium max 2 per guest");return;}
+
+let order={
+table:table,
+guests:guests,
+items:items,
+time:new Date().toISOString()
+};
+
+console.log(JSON.stringify(order));
+
+lastOrder[table]=now;
+
+alert("Order sent to kitchen");
+}
+</script>
+
+</body>
+</html>
